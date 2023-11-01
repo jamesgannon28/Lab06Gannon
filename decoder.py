@@ -17,11 +17,11 @@ def main():
             print(password)
 
         elif selection == 2:
-            pass
+            output = decode(password)
+            print(f"The decoded password is {output}, and the original password is {password}")
 
         elif selection == 3:
             break
-
 
 
 def encode(num): # This function encodes the password
@@ -33,6 +33,21 @@ def encode(num): # This function encodes the password
         num //= 10
     return result
 
+def decode(password): # This function decodes the password
+    output = ''
+    password = str(password)
+    for i in range(len(password)):
+        if password[i] == "0":
+            output += '7'
+        elif password[i] == "1":
+            output += '8'
+        elif password[i] == "2":
+            output += '9'
+        else:
+            newnum = int(password[i])-3
+            output += str(newnum)
+    return output
 
 if __name__ == '__main__': # This calls the main method
     main()
+
